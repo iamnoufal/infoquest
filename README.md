@@ -1,12 +1,12 @@
-# Invictus 2021
-Invictus Fest was conducted for the students of IITM BSc by Kaziranga, Namdapha and Wayanad houses from 28 August, 2021 to September 05, 2021
+# Infoquest 2023
+yada yada yada
 
 
 ## Steps to run the project on local system
 
 - Select a directory where you want to clone this project
-- Run command `git clone git@github.com:Rahman24/invictus.git` - This will install all the files within `invictus` folder
-- Go to the project folder using `cd invictus-react`
+- Run command `git clone git@github.com:iamnoufal/infoquest.git` - This will install all the files within `infoquest` folder
+- Go to the project folder using `cd infoquest`
 - Install project dependencies using `npm install`
 - Make sure you have the `.env.development` file with all secret values present
 - Start local server using `npm start`
