@@ -1,8 +1,8 @@
 import Layout from "components/Layout";
 
 import wnkLogo from "assets/images/wnk-logo.webp";
-import stratlytics from "assets/images/stratlytics.png";
-import ytIcon from "assets/images/yt.png";
+// import stratlytics from "assets/images/stratlytics.png";
+// import ytIcon from "assets/images/yt.png";
 
 import { Circle, SmallCircle, ShadowCircle } from "components/Circle";
 
@@ -62,13 +62,13 @@ const HomePage = () => {
   		    </Circle>
   		    <Circle style={{ height: "14rem", width: "14rem" }} position={{ jusitifyContent: "center" }}>
   		    	<p style={{ fontSize: "0.8rem", marginBottom: "0", marginTop: "1.5rem" }}>Proudly Sponsored by</p>
-  		    	<img src={stratlytics} width="100%" />
+  		    	{/* <img src={stratlytics} width="100%" /> */}
   		    </Circle>
   		  </div>
   		  <div>
   		    <Circle style={{ height: "10rem", width: "10rem" }} position={{ justifyContent: "right" }}>
   		    	<p style={{ fontSize: "0.6rem", marginBottom: "0" }}>Check us out on</p>
-  		    	<a href="https://www.youtube.com/channel/UCax6gDzWhjc1177nGU2A_Ew"><img src={ytIcon} width="50%" /></a>
+  		    	{/* <a href="https://www.youtube.com/channel/UCax6gDzWhjc1177nGU2A_Ew"><img src={ytIcon} width="50%" /></a> */}
   		    </Circle>
   			    <Circle style={{ height: "11rem", width: "11rem" }} position={{ justifyContent: "center", marginTop: "4rem" }}>
   		    	<p style={{ fontSize: "0.6rem", marginBottom: "0rem", marginTop: "0.4rem" }}>Brought to you by</p>
