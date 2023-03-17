@@ -10,21 +10,21 @@ const LINKS = [
     label: "Home",
   },
   {
-    to: "/events",
-    label: "Events List",
+    to: "/quests",
+    label: "Quests",
   },
   {
-    to: "/pass",
-    label: "Event Pass",
-  },
-  {
-    to: "/archives",
-    label: "Archives",
+    to: "/profile",
+    label: "Profile",
   },
   {
     to: "/team",
     label: "Our Team",
   },
+  {
+    to: '/about',
+    label: "About"
+  }
 ];
 
 const NavigationDefault = () => {

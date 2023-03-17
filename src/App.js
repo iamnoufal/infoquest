@@ -3,12 +3,9 @@ import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 import HomePage from "pages/home";
-import EventSchedulePage from "pages/schedule";
 import EventsPage from "pages/events";
 import TeamPage from "pages/team";
-import EventPassPage from "pages/pass";
-import EventLivePage from "pages/live";
-import ArchivePage from "pages/archives";
+import ProfilePage from "pages/profile";
 import Authenticate from "components/Auth";
 import PaymentPage from "pages/payment";
 
@@ -19,6 +16,7 @@ import { parseSessionData } from "helpers/auth";
 import { onMessageListener } from "apis/firebase";
 
 import "./App.css";
+import AboutPage from "pages/about";
 
 const defaultState = { loading: false, liveData: {} };
 function App() {
@@ -51,30 +49,18 @@ function App() {
       <AppContext.Provider value={{ session, setSession }}>
         <BrowserRouter>
           <Switch>
-            <Route exact path="/events" render={(routeProps) => <EventsPage {...routeProps} />} />
-            <Route exact path="/payment" render={(routeProps) => <PaymentPage {...routeProps} />} />
-            <Route
-              exact
-              path="/schedule"
-              render={(routeProps) => (
-                <Authenticate>
-                  <EventSchedulePage {...routeProps} />
-                </Authenticate>
-              )}
-            />
-            <Route exact path="/live" render={(routeProps) => <EventLivePage {...routeProps} />} />
+
+            {/* events page route */}
+            <Route exact path="/quests" component={EventsPage} />
             <Route exact path="/team" component={TeamPage} />
-            <Route exact path="/pass" render={(routeProps) => <EventPassPage {...routeProps} />} />
+
+            {/* profile page route. also the route for auth */}
+            <Route exact path="/profile" component={ProfilePage} />
+            <Route exact path="/about" component={AboutPage} />
             <Route exact path="/" component={HomePage} />
-            <Route 
-            	exact 
-            	path="/archives" 
-            	render={(routeProps)=>(
-            		<Authenticate>
-            			<ArchivePage {...routeProps} />
-            		</Authenticate> 
-            	)}
-            />
+
+            {/* payment page for hyden */}
+            <Route exact path="/payment" component={PaymentPage} />
             <Redirect from="*" to="/" />
           </Switch>
         </BrowserRouter>

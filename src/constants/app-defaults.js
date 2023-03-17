@@ -1,11 +1,11 @@
 export const EVENT_CATEGORIES = Object.freeze({
-  fun: {
-    name: "fun",
+  technical: {
+    name: "technical",
   },
-  competitive: {
-    name: "competitive",
+  nonTechnical: {
+    name: "non-technical",
   },
-  educational: {
-    name: "educational",
+  workshops : {
+    name: "workshops ",
   },
 });
