@@ -10,6 +10,7 @@ import EventPassPage from "pages/pass";
 import EventLivePage from "pages/live";
 import ArchivePage from "pages/archives";
 import Authenticate from "components/Auth";
+import PaymentPage from "pages/payment";
 
 import { AppContext } from "contexts/app";
 
@@ -51,6 +52,7 @@ function App() {
         <BrowserRouter>
           <Switch>
             <Route exact path="/events" render={(routeProps) => <EventsPage {...routeProps} />} />
+            <Route exact path="/payment" render={(routeProps) => <PaymentPage {...routeProps} />} />
             <Route
               exact
               path="/schedule"
