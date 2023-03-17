@@ -14,13 +14,13 @@ import { AppContext } from "contexts/app";
 
 import "./List.css";
 
-const { fun: funCategory, competitive: compCategory, educational: eduCategory } = EVENT_CATEGORIES;
+const { technical: technicalCategory, nonTechnical: compCategory, workshops: eduCategory } = EVENT_CATEGORIES;
 
 const EventsList = () => {
   const [loadingEvents, setLoadingEvents] = useState(true);
   const [eventsByCategory, setEventsByCategory] = useState({});
   const [notify, setNotify] = useState(false);
-  const [activeCategory, setActiveCategory] = useState(funCategory.name);
+  const [activeCategory, setActiveCategory] = useState(technicalCategory.name);
   const { session } = useContext(AppContext);
 
   const handleCategorySelection = (event) => {
@@ -83,7 +83,7 @@ const EventsList = () => {
   const eventList = eventsByCategory[activeCategory] || [];
   return (
     <div className="events-list">
-      <h1 className="text-center text-white mb-5 heading text-uppercase">Events List</h1>
+      <h2 className="text-center text-white mb-5 heading text-uppercase">Get yourselves engaged with a quest!</h2>
       <div
         className="btn-group event-category-group mb-5"
         role="group"
@@ -93,14 +93,14 @@ const EventsList = () => {
           type="radio"
           className="btn-check"
           name="activeCategory"
-          value={funCategory.name}
+          value={technicalCategory.name}
           id="btnradio1"
           autoComplete="off"
           onChange={handleCategorySelection}
-          checked={activeCategory === funCategory.name}
+          checked={activeCategory === technicalCategory.name}
         />
         <label className="btn btn-outline-green text-uppercase fw-bold" htmlFor="btnradio1">
-          Fun
+          technical
         </label>
 
         <input
@@ -114,7 +114,7 @@ const EventsList = () => {
           checked={activeCategory === compCategory.name}
         />
         <label className="btn btn-outline-green text-uppercase fw-bold" htmlFor="btnradio2">
-          Competitive
+          non technical
         </label>
 
         <input
@@ -128,7 +128,7 @@ const EventsList = () => {
           checked={activeCategory === eduCategory.name}
         />
         <label className="btn btn-outline-green text-uppercase fw-bold" htmlFor="btnradio3">
-          Educational
+          workshops
         </label>
       </div>
 
