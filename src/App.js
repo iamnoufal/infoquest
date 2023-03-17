@@ -17,6 +17,7 @@ import { onMessageListener } from "apis/firebase";
 
 import "./App.css";
 import AboutPage from "pages/about";
+import RegisterPage from "pages/register";
 
 const defaultState = { loading: false, liveData: {} };
 function App() {
@@ -53,6 +54,7 @@ function App() {
             {/* events page route */}
             <Route exact path="/quests" component={EventsPage} />
             <Route exact path="/team" component={TeamPage} />
+            <Route exact path="/register" component={RegisterPage} />
 
             {/* profile page route. also the route for auth */}
             <Route exact path="/profile" component={ProfilePage} />
