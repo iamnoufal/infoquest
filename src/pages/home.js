@@ -46,7 +46,7 @@ const HomePage = () => {
 		 	</div>
     	<div className="home-page">
     		<div>
-	      	<Circle style={{ height: "18rem", width: "18rem" }} position={{ justifyContent: "left" }}>
+	      	<Circle style={{ height: "18rem", width: "18rem" }} position={{ justifyContent: "left" }} border="10rem 8rem 14rem 8rem">
   	    		<p style={{ fontSize: "1.3rem", margin: "1.7rem" }}>
   	    			Event Date <br />
   	    			<span className="text-color-green">Aug 28 2021</span><br />
@@ -54,27 +54,27 @@ const HomePage = () => {
   		    		<span className="text-color-green">Sept 5 2021</span>
   	    		</p>
 	  	    </Circle>
-  		    <Circle style={{ height: "13rem", width: "13rem" }} position={{ justifyContent: "center", marginTop: "7rem" }}>
+  		    <Circle style={{ height: "13rem", width: "13rem" }} position={{ justifyContent: "center", marginTop: "7rem" }} border="7rem 10rem 6rem 10rem">
   		    	<p>
   		    		<span className="text-color-green" style={{ fontSize: "1.8rem", marginBottom: "0" }}>15+</span><br />
   		    		Activities Organized
   		    	</p>
   		    </Circle>
-  		    <Circle style={{ height: "14rem", width: "14rem" }} position={{ jusitifyContent: "center" }}>
+  		    <Circle style={{ height: "14rem", width: "14rem" }} position={{ justifyContent: "center" }} border="9rem 10rem 10rem 17rem">
   		    	<p style={{ fontSize: "0.8rem", marginBottom: "0", marginTop: "1.5rem" }}>Proudly Sponsored by</p>
   		    	{/* <img src={stratlytics} width="100%" /> */}
   		    </Circle>
   		  </div>
   		  <div>
-  		    <Circle style={{ height: "10rem", width: "10rem" }} position={{ justifyContent: "right" }}>
+  		    <Circle style={{ height: "10rem", width: "10rem" }} position={{ justifyContent: "right" }} border="10rem 15rem 10rem 15rem">
   		    	<p style={{ fontSize: "0.6rem", marginBottom: "0" }}>Check us out on</p>
   		    	{/* <a href="https://www.youtube.com/channel/UCax6gDzWhjc1177nGU2A_Ew"><img src={ytIcon} width="50%" /></a> */}
   		    </Circle>
-  			    <Circle style={{ height: "11rem", width: "11rem" }} position={{ justifyContent: "center", marginTop: "4rem" }}>
+  			    <Circle style={{ height: "11rem", width: "11rem" }} position={{ justifyContent: "center", marginTop: "4rem" }} border="50%">
   		    	<p style={{ fontSize: "0.6rem", marginBottom: "0rem", marginTop: "0.4rem" }}>Brought to you by</p>
   		    	<img src={wnkLogo} width="80%" />
   		    </Circle>
-  		    <Circle style={{ height: "13rem", width: "13rem" }} position={{ justifyContent: "left" }}>
+  		    <Circle style={{ height: "13rem", width: "13rem" }} position={{ justifyContent: "left" }} border="15rem 10rem 15rem 10rem">
   		    	<p style={{ fontSize: "0.85rem", margin: "1.1rem 0" }}>Open to all the students of IITM BSc</p>
   		    </Circle>
   		  </div>
