@@ -144,14 +144,22 @@ export const getTeamDetails = () => {
   });
 };
 
-export const registerProfile = async(email, name, phn, clg, dept, year) => {
-  const db = getFirestore();  
-  const res = await db.collection('users').doc().set({
+export const registerProfile = async (email, name, phn, clg, dept, year) => {  
+  console.log(email, name)
+  const db = getFirestore()
+  let reqDoc = doc(db, "users", "email")
+  let a = await setDoc(reqDoc, {'test': 'test'})
+  console.log(reqDoc)
+  let data = {
     email: email,
     name: name, 
     phn: phn, 
     clg: clg, 
     dept: dept, 
     year: year
+  }
+  console.log(data)
+  return setDoc(doc(db, "users", email), { data }).catch((err) => {
+    alert(err);
   });
 }
