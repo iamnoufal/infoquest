@@ -144,7 +144,14 @@ export const getTeamDetails = () => {
   });
 };
 
-export const registerProfile = (email, name, phn, clg, dept, year) => {
-  // register function for Akshaya
-  return
+export const registerProfile = async(email, name, phn, clg, dept, year) => {
+  const db = getFirestore();  
+  const res = await db.collection('users').doc().set({
+    email: email,
+    name: name, 
+    phn: phn, 
+    clg: clg, 
+    dept: dept, 
+    year: year
+  });
 }
