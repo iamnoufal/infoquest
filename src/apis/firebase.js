@@ -156,7 +156,8 @@ export const registerProfile = async (name, phn, clg, dept, year) => {
     phn: phn, 
     clg: clg, 
     dept: dept, 
-    year: year
+    year: year,
+    registered: [],
   }
   return setDoc(doc(db, "users", email), data).catch((err) => {
     alert(err);

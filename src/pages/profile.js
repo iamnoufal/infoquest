@@ -51,7 +51,7 @@ const ProfilePage = () => {
   return (
     <Layout>
       <div className="container event-pass-page">
-        <h1 className="text-white text-uppercase text-center my-5 heading">Event Passes</h1>
+        <h1 className="text-white text-uppercase text-center my-5 heading">Profile</h1>
         <Loader loading={loading}>
           {session.accessToken ? (
             <>
