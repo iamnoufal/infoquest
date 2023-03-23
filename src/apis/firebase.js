@@ -17,6 +17,7 @@ export const getEvents = () => {
     let events = [];
     querySnapshot.forEach((doc) => {
       const { category, start, end, desc, img, gform, type, rules, completed, yt } = doc.data();
+      console.log(doc.data())
       events.push({
         name: doc.id,
         category,
