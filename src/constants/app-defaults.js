@@ -6,6 +6,6 @@ export const EVENT_CATEGORIES = Object.freeze({
     name: "non-technical",
   },
   workshops : {
-    name: "workshops ",
+    name: "workshop",
   },
 });
