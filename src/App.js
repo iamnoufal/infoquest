@@ -54,7 +54,13 @@ function App() {
             {/* events page route */}
             <Route exact path="/quests" component={EventsPage} />
             <Route exact path="/team" component={TeamPage} />
-            <Route exact path="/register" component={RegisterPage} />
+            <Route exact path="/register" component={() => {
+              return (
+                <Authenticate>
+                  <RegisterPage />
+                </Authenticate>
+              )
+            }} />
 
             {/* profile page route. also the route for auth */}
             <Route exact path="/profile" component={ProfilePage} />

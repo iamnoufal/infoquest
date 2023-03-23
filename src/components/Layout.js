@@ -1,6 +1,6 @@
 import NavigationDefault from "components/nav/Default";
 import Footer from "components/Footer";
-
+ 
 import "./Layout.css";
 
 const Layout = ({ children }) => {

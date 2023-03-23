@@ -11,7 +11,7 @@ const HomePage = () => {
     <Layout>
     	<div className="mask-desk">
 		  	<SmallCircle style={{ height: "5rem", width: "5rem", right: "5vw" }} />
-	 			<SmallCircle style={{ height: "2rem", width: "2rem", left: "40vw", top: "12vw" }} />
+	 		<SmallCircle style={{ height: "2rem", width: "2rem", left: "40vw", top: "12vw" }} />
 		  	<SmallCircle style={{ height: "5rem", width: "5rem", top: "30vw", left: "10vw" }} />
 		  	<SmallCircle style={{ height: "4rem", width: "4rem", top: "20vw", right: "10vw" }} />
 		 		<SmallCircle style={{ height: "3rem", width: "3rem", left: "4vw" }} />
