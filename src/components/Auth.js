@@ -27,7 +27,7 @@ const Authenticate = ({ children }) => {
   if (session.accessToken) {
     return children;
   } else {
-    return <Redirect to="/pass" />;
+    return <Redirect to="/profile" />;
   }
 };
 

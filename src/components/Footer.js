@@ -3,7 +3,7 @@ import wnkLogo from "assets/images/wnk-logo.webp";
 import "./Footer.css";
 import instaIcon from "assets/images/icon_insta.webp";
 import youtubeIcon from "assets/images/icon_youtube.webp";
-
+ 
 const Footer = () => {
   return (
     <footer className="footer ">
