@@ -9,6 +9,7 @@ import AuthButton from "components/button/Auth";
 import { getProfileDetails } from "apis/firebase";
 
 import { AppContext } from "contexts/app";
+import { Redirect } from "react-router";
 
 const ProfilePage = () => {
   const [profile, setProfile] = useState({});
@@ -54,8 +55,7 @@ const ProfilePage = () => {
         <Loader loading={loading}>
           {session.accessToken ? (
             <>
-              <Profile {...profile} />
-              <EventPassList passes={profile.eventPasses} />
+              {profile.name == null ? <Redirect to='/register' /> : (<><Profile {...profile} /><EventPassList passes={profile.eventPasses} /></>)}
             </>
           ) : (
             <div className="m-auto text-center my-2">
