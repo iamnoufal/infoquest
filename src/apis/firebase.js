@@ -9,6 +9,7 @@ import {
 } from "@firebase/firestore";
 import { getAuth, signInWithPopup, GoogleAuthProvider, signOut } from "firebase/auth";
 import { getMessaging, onMessage } from "firebase/messaging";
+import { Redirect } from "react-router";
 
 export const getEvents = () => {
   const db = getFirestore();
@@ -38,11 +39,11 @@ export const getProfileDetails = async () => {
   let regEvents = [];
   const auth = getAuth();
   const user = auth.currentUser;
-  const { displayName: userName, email } = user;
+  const { email } = user;
   const db = getFirestore();
   try {
     const userDoc = await getDoc(doc(db, "users", email));
-    const { registered = [], group, house } = userDoc.data();
+    const { registered = [], clg, dept, year, phn, name } = userDoc.data();
     for (let i of registered) {
       const eventDoc = await getDoc(doc(db, "events", i));
       if (eventDoc.data()) {
@@ -58,16 +59,16 @@ export const getProfileDetails = async () => {
       }
     }
     return {
-      userName,
+      name,
       email,
-      group,
-      house,
+      clg, 
+      dept,
+      year, 
+      phn,
       eventPasses: regEvents,
     };
   } catch (err) {
-    signOut(auth);
-    alert("Sign in using your student login email");
-    return {};
+    return { name: null }
   }
 };
 
@@ -144,12 +145,11 @@ export const getTeamDetails = () => {
   });
 };
 
-export const registerProfile = async (email, name, phn, clg, dept, year) => {  
-  console.log(email, name)
+export const registerProfile = async (name, phn, clg, dept, year) => {  
+  const auth = getAuth();
+  const user = auth.currentUser;
+  const { email } = user;
   const db = getFirestore()
-  let reqDoc = doc(db, "users", "email")
-  let a = await setDoc(reqDoc, {'test': 'test'})
-  console.log(reqDoc)
   let data = {
     email: email,
     name: name, 
@@ -158,8 +158,7 @@ export const registerProfile = async (email, name, phn, clg, dept, year) => {
     dept: dept, 
     year: year
   }
-  console.log(data)
-  return setDoc(doc(db, "users", email), { data }).catch((err) => {
+  return setDoc(doc(db, "users", email), data).catch((err) => {
     alert(err);
   });
 }
