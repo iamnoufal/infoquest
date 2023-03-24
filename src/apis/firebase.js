@@ -9,15 +9,13 @@ import {
 } from "@firebase/firestore";
 import { getAuth, signInWithPopup, GoogleAuthProvider, signOut } from "firebase/auth";
 import { getMessaging, onMessage } from "firebase/messaging";
-import { Redirect } from "react-router";
 
 export const getEvents = () => {
   const db = getFirestore();
   return getDocs(collection(db, "events")).then((querySnapshot) => {
     let events = [];
     querySnapshot.forEach((doc) => {
-      const { category, start, end, desc, img, gform, type, rules, completed, yt } = doc.data();
-      console.log(doc.data())
+      const { category, start, end, desc, img, gform, type, rules, completed, yt, amt } = doc.data();
       events.push({
         name: doc.id,
         category,
@@ -30,6 +28,7 @@ export const getEvents = () => {
         rules,
         completed,
         yt,
+        amt
       });
     });
     return [...events].sort((a, b) => a?.start?.seconds - b?.start?.seconds);
@@ -46,11 +45,11 @@ export const getProfileDetails = async () => {
     const userDoc = await getDoc(doc(db, "users", email));
     const { registered = [], clg, dept, year, phn, name } = userDoc.data();
     for (let i of registered) {
-      const eventDoc = await getDoc(doc(db, "events", i));
+      const eventDoc = await getDoc(doc(db, "events", i.event));
       if (eventDoc.data()) {
         const { category, start, end, desc, img } = eventDoc.data();
         regEvents.push({
-          name: i,
+          name: i.event,
           category,
           start,
           end,
@@ -163,4 +162,14 @@ export const registerProfile = async (name, phn, clg, dept, year) => {
   return setDoc(doc(db, "users", email), data).catch((err) => {
     alert(err);
   });
+}
+
+export const registerEvent = async (email, eventName, paymentID = "") => {
+  let data = {event: eventName, paymentID: paymentID}
+  const db = getFirestore()
+  let userDoc = await getDoc(doc(db, 'users', email))
+  let userData = await userDoc.data()
+  let registered = userData.registered
+  registered.push(data)
+  return setDoc(doc(db, 'users', email), {...userData, registered: registered})
 }

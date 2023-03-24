@@ -1,46 +1,41 @@
-import React,{useCallback} from 'react'
+import { useCallback } from 'react'
+import { registerEvent } from 'apis/firebase';
 import useRazorpay from "react-razorpay";
 
-
-function Payment() {
- const Razorpay=useRazorpay();
-
- const handlePayment = useCallback(async() => {
-    
-    const options={
-      key:"",
-      amount: 100*100,
+function PaymentButton({ name, email, phn, amt, workshopName }) {
+  const Razorpay = useRazorpay();
+  const handlePayment = useCallback(async() => {
+    const options = {
+      key: "rzp_test_yXI8CcMOkrPhmV",
+      amount: amt*100,
       currency: "INR",
       name: "InfoQuest",
-      description: "Test Transaction",
+      description: workshopName,
       image: "https://drive.google.com/file/d/17xEkBh9293ZN0EjwF6BjYDoUeoT-euVU/view?usp=drivesdk ",
       handler: (res) => {
-        console.log(res.razorpay_payment_id);
+        registerEvent(email, workshopName, res.razorpay_payment_id).then(() => alert("You've successfully registered for "+workshopName)).catch(err => alert(err))
       },
       prefill: {
-        name: "Noufal Rahman",
-        email: "jnrahman12@gmail.com",
-        contact: "8610023136",
+        name: name,
+        email: email,
+        contact: phn,
       },
       notes: {
-        address: "Razorpay Corporate Office",
+        address: "Computer Science and Engineering Association, Government College of Technology, Coimbatore",
       },
       theme: {
         color: "#063A50",
       },
     };
-
     const rzpay = new Razorpay(options);
     rzpay.open();
   }, [Razorpay]);
 
-
- 
   return (
     <div>
-        <button onClick={handlePayment} className="btn register-button rounded-pill bg-color-aquagreen signin fs-4">Register & Pay</button>
+      <button onClick={handlePayment} className="mx-1 btn mt-3 mb-3 register-button rounded-pill bg-color-aquagreen">Pay and Register</button>
     </div>
   )
 }
 
-export default Payment
+export default PaymentButton

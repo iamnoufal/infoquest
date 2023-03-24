@@ -12,7 +12,6 @@ import { AppContext } from "contexts/app";
 import { Redirect } from "react-router";
 
 const ProfilePage = () => {
-  const [profile, setProfile] = useState({});
   const [loading, setLoading] = useState(true);
   const { session, setSession } = useContext(AppContext);
 
@@ -22,7 +21,7 @@ const ProfilePage = () => {
   };
 
   const handleAuthSuccess = (response) => {
-    setSession(response);
+    getProfileDetails().then(res => setSession({...response, profile: res}))
   };
 
   useEffect(() => {
@@ -32,19 +31,10 @@ const ProfilePage = () => {
   }, [session])
 
   useEffect(() => {
-    if (session.accessToken) {
-      setLoading(true);
-      getProfileDetails()
-        .then((response) => {
-          setProfile(response);
-        })
-        .then(() => {
-          setLoading(false);
-        })
-        .catch((err) => {
-          setLoading(false);
-          throw err;
-        });
+    if (session.accessToken ) {
+      if (session.profile) {
+        setLoading(false)
+      }
     }
   }, [session]);
 
@@ -55,7 +45,7 @@ const ProfilePage = () => {
         <Loader loading={loading}>
           {session.accessToken ? (
             <>
-              {profile.name == null ? <Redirect to='/register' /> : (<><Profile {...profile} /><EventPassList passes={profile.eventPasses} /></>)}
+              {(session.profile.name === null && session.profile !== undefined) ? <Redirect to='/register' /> : (<><Profile {...session.profile} /><EventPassList passes={session.profile.eventPasses} /></>)}
             </>
           ) : (
             <div className="m-auto text-center my-2">

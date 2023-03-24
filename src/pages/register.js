@@ -1,9 +1,10 @@
-import { getProfileDetails, registerProfile } from "../apis/firebase";
+import { registerProfile } from "../apis/firebase";
 import { SmallCircle } from "components/Circle";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Layout from "components/Layout";
 import { Redirect } from "react-router";
 import Loader from "components/Loader";
+import { AppContext } from "contexts/app";
 
 const RegisterPage = () => {
   const [name, setname] = useState('')
@@ -13,18 +14,23 @@ const RegisterPage = () => {
   const [phn, setphn] = useState('')
   const [registered, setRegistered] = useState(false)
   const [loading, setLoading] = useState(true)
+  const { session, setSession } = useContext(AppContext)
   const register = () => {
-    registerProfile(name, phn, clg, dept, year).then(r => setRegistered(true)).catch(e => console.log(e))
+    registerProfile(name, phn, clg, dept, year).then(() => {
+      setRegistered(true);
+      setSession({...session, profile: {name, phn, clg, dept, year}})
+    }).catch(e => console.log(e))
   }
   useEffect(() => {
-    getProfileDetails().then(res => {
-      if (res.name != null) {
-        setRegistered(true)
+    if (session.accessToken) {
+      if (session.profile.name == null) {
+        setLoading(false)
       } else {
+        setRegistered(true)
         setLoading(false)
       }
-    }) 
-  })
+    }
+  }, [session])
   if (registered) {
     return <Redirect to='/profile' />
   }
