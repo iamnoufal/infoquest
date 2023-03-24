@@ -44,7 +44,7 @@ function App() {
       })
       .catch((err) => console.err(err));
   });
-  console.log(getProfileDetails)
+
   return (
     <div className="App">
       <AppContext.Provider value={{ session, setSession }}>
@@ -62,22 +62,10 @@ function App() {
               )
             }} />
 
-
             {/* profile page route. also the route for auth */}
             <Route exact path="/profile" component={ProfilePage} />
             <Route exact path="/about" component={AboutPage} />
             <Route exact path="/" component={HomePage} />
-            <Route exact path="/payment" component={() => {
-              return (
-                <Authenticate>
-                  <PaymentPage />
-                </Authenticate>
-              )
-            }} />
-
-            {/* payment page for hyden */}
-            {/* <Route exact path="/payment" component={PaymentPage} auth={{getProfileDetails}!==null}/> */}
-            {/* <Redirect from="*" to="/" /> */}
           </Switch>
         </BrowserRouter>
       </AppContext.Provider>
