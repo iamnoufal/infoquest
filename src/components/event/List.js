@@ -14,7 +14,7 @@ import { AppContext } from "contexts/app";
 
 import "./List.css";
 
-const { technical: technicalCategory, nonTechnical: compCategory, workshops: eduCategory } = EVENT_CATEGORIES;
+const { technical: technicalCategory, nonTechnical: nonTechnicalCategory, workshops: workshopCategory } = EVENT_CATEGORIES;
 
 const EventsList = () => {
   const [loadingEvents, setLoadingEvents] = useState(true);
@@ -107,11 +107,11 @@ const EventsList = () => {
           type="radio"
           className="btn-check"
           name="activeCategory"
-          value={compCategory.name}
+          value={nonTechnicalCategory.name}
           id="btnradio2"
           autoComplete="off"
           onChange={handleCategorySelection}
-          checked={activeCategory === compCategory.name}
+          checked={activeCategory === nonTechnicalCategory.name}
         />
         <label className="btn btn-outline-green text-uppercase fw-bold" htmlFor="btnradio2">
           non technical
@@ -121,11 +121,11 @@ const EventsList = () => {
           type="radio"
           className="btn-check"
           name="activeCategory"
-          value={eduCategory.name}
+          value={workshopCategory.name}
           id="btnradio3"
           autoComplete="off"
           onChange={handleCategorySelection}
-          checked={activeCategory === eduCategory.name}
+          checked={activeCategory === workshopCategory.name}
         />
         <label className="btn btn-outline-green text-uppercase fw-bold" htmlFor="btnradio3">
           workshops

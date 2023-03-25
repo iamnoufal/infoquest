@@ -13,22 +13,22 @@ import { AppContext } from "contexts/app";
 
 import { parseSessionData } from "helpers/auth";
 
-import { onMessageListener,getProfileDetails} from "apis/firebase";
+import { onMessageListener } from "apis/firebase";
 
 import "./App.css";
 import AboutPage from "pages/about";
 import RegisterPage from "pages/register";
 
-const defaultState = { loading: false, liveData: {} };
+const defaultState = { loading: false, profile: {} };
 function App() {
   const [session, setSession] = useState({ ...defaultState, loading: true });
-
   useLayoutEffect(() => {
     const auth = getAuth();
-    onAuthStateChanged(auth, (user) => {
+    onAuthStateChanged(auth, async (user) => {
       let data = { ...defaultState };
       if (user) {
         data = { ...defaultState, ...parseSessionData(user), loading: false };
+        data['profile'] = await getProfileDetails()
       }
       setSession(data);
     });

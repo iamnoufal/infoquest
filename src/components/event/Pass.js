@@ -1,6 +1,6 @@
 import "./Pass.css";
 
-const EventPass = ({ name, img, start, end, ...rest }) => {
+const EventPass = ({ name, img, start, end }) => {
   const currentDate = parseInt(Date.now()/1000);
   const status = (() => {
     if(currentDate < start.seconds) {

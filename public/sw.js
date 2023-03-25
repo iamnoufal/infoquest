@@ -39,7 +39,6 @@ self.addEventListener("fetch", (event) => {
           return networkResponse;
         } catch (error) {
           console.log("Fetch failed; returning offline page instead.", error);
-
           const cache = await caches.open(CACHE_NAME);
           const cachedResponse = await cache.match(OFFLINE_URL);
           return cachedResponse;
