@@ -13,7 +13,7 @@ import { AppContext } from "contexts/app";
 
 import { parseSessionData } from "helpers/auth";
 
-import { onMessageListener } from "apis/firebase";
+import { getProfileDetails, onMessageListener } from "apis/firebase";
 
 import "./App.css";
 import AboutPage from "pages/about";
