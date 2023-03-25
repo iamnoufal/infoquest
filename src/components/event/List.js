@@ -4,7 +4,7 @@ import { getMessaging, getToken } from "firebase/messaging";
 import { getEvents, updateFCMTokenToDB } from "apis/firebase";
 
 import EventCard from "./Card";
-import Loader from "components/Loader";
+import Loader from "components/Loader/Loader";
 
 import { EVENT_CATEGORIES } from "constants/app-defaults";
 

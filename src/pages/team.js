@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { getTeamDetails } from "apis/firebase";
 
 import Layout from "components/Layout";
-import Loader from "components/Loader";
+import Loader from "components/Loader/Loader";
 import User from "components/User";
 import Contact from "components/Contact";
 
