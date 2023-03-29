@@ -32,7 +32,7 @@ const NavigationDefault = () => {
     <nav className="navbar navbar-dark bg-color-darkgreen fixed-top navbar-expand-lg px-4 shadow">
       <div className="container-fluid">
         <span className="navbar-brand">
-          Invictus
+          Infoquest
         </span>
         <button
           className="navbar-toggler"

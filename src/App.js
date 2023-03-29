@@ -13,22 +13,22 @@ import { AppContext } from "contexts/app";
 
 import { parseSessionData } from "helpers/auth";
 
-import { onMessageListener } from "apis/firebase";
+import { getProfileDetails, onMessageListener } from "apis/firebase";
 
 import "./App.css";
 import AboutPage from "pages/about";
 import RegisterPage from "pages/register";
 
-const defaultState = { loading: false, liveData: {} };
+const defaultState = { loading: false, profile: {} };
 function App() {
   const [session, setSession] = useState({ ...defaultState, loading: true });
-
   useLayoutEffect(() => {
     const auth = getAuth();
-    onAuthStateChanged(auth, (user) => {
+    onAuthStateChanged(auth, async (user) => {
       let data = { ...defaultState };
       if (user) {
         data = { ...defaultState, ...parseSessionData(user), loading: false };
+        data['profile'] = await getProfileDetails()
       }
       setSession(data);
     });
@@ -54,16 +54,18 @@ function App() {
             {/* events page route */}
             <Route exact path="/quests" component={EventsPage} />
             <Route exact path="/team" component={TeamPage} />
-            <Route exact path="/register" component={RegisterPage} />
+            <Route exact path="/register" component={() => {
+              return (
+                <Authenticate>
+                  <RegisterPage />
+                </Authenticate>
+              )
+            }} />
 
             {/* profile page route. also the route for auth */}
             <Route exact path="/profile" component={ProfilePage} />
             <Route exact path="/about" component={AboutPage} />
             <Route exact path="/" component={HomePage} />
-
-            {/* payment page for hyden */}
-            <Route exact path="/payment" component={PaymentPage} />
-            <Redirect from="*" to="/" />
           </Switch>
         </BrowserRouter>
       </AppContext.Provider>

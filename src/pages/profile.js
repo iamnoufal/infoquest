@@ -1,6 +1,6 @@
 import { useEffect, useState, useContext } from "react";
 
-import Loader from "components/Loader";
+import Loader from "components/Loader/Loader";
 import Layout from "components/Layout";
 import Profile from "components/Profile";
 import EventPassList from "components/event/PassList";
@@ -9,9 +9,9 @@ import AuthButton from "components/button/Auth";
 import { getProfileDetails } from "apis/firebase";
 
 import { AppContext } from "contexts/app";
+import { Redirect } from "react-router";
 
 const ProfilePage = () => {
-  const [profile, setProfile] = useState({});
   const [loading, setLoading] = useState(true);
   const { session, setSession } = useContext(AppContext);
 
@@ -21,7 +21,7 @@ const ProfilePage = () => {
   };
 
   const handleAuthSuccess = (response) => {
-    setSession(response);
+    getProfileDetails().then(res => setSession({...response, profile: res}))
   };
 
   useEffect(() => {
@@ -31,31 +31,21 @@ const ProfilePage = () => {
   }, [session])
 
   useEffect(() => {
-    if (session.accessToken) {
-      setLoading(true);
-      getProfileDetails()
-        .then((response) => {
-          setProfile(response);
-        })
-        .then(() => {
-          setLoading(false);
-        })
-        .catch((err) => {
-          setLoading(false);
-          throw err;
-        });
+    if (session.accessToken ) {
+      if (session.profile) {
+        setLoading(false)
+      }
     }
   }, [session]);
 
   return (
     <Layout>
       <div className="container event-pass-page">
-        <h1 className="text-white text-uppercase text-center my-5 heading">Event Passes</h1>
+        <h1 className="text-white text-uppercase text-center my-5 heading">Profile</h1>
         <Loader loading={loading}>
           {session.accessToken ? (
             <>
-              <Profile {...profile} />
-              <EventPassList passes={profile.eventPasses} />
+              {(session.profile.name === null && session.profile !== undefined) ? <Redirect to='/register' /> : (<><Profile {...session.profile} /><EventPassList passes={session.profile.eventPasses} /></>)}
             </>
           ) : (
             <div className="m-auto text-center my-2">

@@ -2,8 +2,8 @@ import "./Circle.css";
 
 export const Circle = ({ children, style, position }) => {
 	return (
-		<div className="circle" style={position}>
-			<div className="circle-1" style={style}>
+		<div className="circle" style={{ ...position }}>
+			<div className="circle-1" style={{ ...style }}>
 				<div className="circle-2">
 					<div className="circle-3">
 						<div className="circle-4">
