@@ -66,10 +66,6 @@ function App() {
             <Route exact path="/profile" component={ProfilePage} />
             <Route exact path="/about" component={AboutPage} />
             <Route exact path="/" component={HomePage} />
-
-            {/* payment page for hyden */}
-            <Route exact path="/payment" component={PaymentPage} />
-            <Redirect from="*" to="/" />
           </Switch>
         </BrowserRouter>
       </AppContext.Provider>
