@@ -3,6 +3,7 @@ import wnkLogo from "assets/images/wnk-logo.webp";
 import "./Footer.css";
 import instaIcon from "assets/images/icon_insta.webp";
 import youtubeIcon from "assets/images/icon_youtube.webp";
+import { Link } from "react-router-dom";
  
 const Footer = () => {
   return (
@@ -38,6 +39,13 @@ const Footer = () => {
             </li>
           </ul>
         </div>
+      </div>
+      <div>
+        <Link to="https://merchant.razorpay.com/policy/LXBqTcG0WUhiy6/terms" target="_blank" rel="noreferrer">Terms and Conditions</Link>
+        <Link to="https://merchant.razorpay.com/policy/LXBqTcG0WUhiy6/privacy" target="_blank" rel="noreferrer">Privacy Policy</Link>
+        <Link to="https://merchant.razorpay.com/policy/LXBqTcG0WUhiy6/contact_us" target="_blank" rel="noreferrer">Contact Us</Link>
+        <Link to="https://merchant.razorpay.com/policy/LXBqTcG0WUhiy6/Shipping" target="_blank" rel="noreferrer">Shipping</Link>
+        <Link to="https://merchant.razorpay.com/policy/LXBqTcG0WUhiy6/refund" target="_blank" rel="noreferrer">Refund</Link>
       </div>
     </footer>
   );
