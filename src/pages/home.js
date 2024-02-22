@@ -49,14 +49,12 @@ const HomePage = () => {
 	      	<Circle style={{ height: "18rem", width: "18rem" }} position={{ justifyContent: "left" }} border="10rem 8rem 14rem 8rem">
   	    		<p style={{ fontSize: "1.3rem", margin: "1.7rem" }}>
   	    			Event Date <br />
-  	    			<span className="text-color-green">Aug 28 2021</span><br />
-		      		till<br />
-  		    		<span className="text-color-green">Sept 5 2021</span>
+  	    			<span className="text-color-green">Mar 08 2024</span>
   	    		</p>
 	  	    </Circle>
   		    <Circle style={{ height: "13rem", width: "13rem" }} position={{ justifyContent: "center", marginTop: "7rem" }} border="7rem 10rem 6rem 10rem">
   		    	<p>
-  		    		<span className="text-color-green" style={{ fontSize: "1.8rem", marginBottom: "0" }}>15+</span><br />
+  		    		<span className="text-color-green" style={{ fontSize: "1.8rem", marginBottom: "0" }}>6+</span><br />
   		    		Activities Organized
   		    	</p>
   		    </Circle>

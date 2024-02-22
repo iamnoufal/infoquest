@@ -34,9 +34,9 @@ const Footer = () => {
         </div>
         <div className="col-6 text-end logo">
           <ul className="list-group list-group-horizontal">
-            <li className="list-group-item bg-transparent border-0 px-0">
+            {/* <li className="list-group-item bg-transparent border-0 px-0">
               <img src={wnkLogo} style={{width:"6rem"}} alt="wnk logo" />
-            </li>
+            </li> */}
           </ul>
         </div>
       </div>
