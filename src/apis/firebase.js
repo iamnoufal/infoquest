@@ -72,7 +72,7 @@ export const getProfileDetails = async () => {
   }
 };
 
-export const signInFirebase = () => {
+export const signInFirebase = async () => {
   const auth = getAuth();
   const provider = new GoogleAuthProvider();
   return signInWithPopup(auth, provider)
@@ -168,7 +168,9 @@ export const registerEvent = async (email, eventName, paymentID = "") => {
   let data = {event: eventName, paymentID: paymentID}
   const db = getFirestore()
   let userDoc = await getDoc(doc(db, 'users', email))
+  console.log(userDoc.data())
   let userData = await userDoc.data()
+  console.log(userData)
   let registered = userData.registered
   registered.push(data)
   return setDoc(doc(db, 'users', email), {...userData, registered: registered})

@@ -7,12 +7,13 @@ function PaymentButton({ name, email, phn, amt, workshopName }) {
   const handlePayment = useCallback(async() => {
     const options = {
       key: "rzp_test_yXI8CcMOkrPhmV",
-      amount: amt*100,
+      amount: 10000,
       currency: "INR",
       name: "InfoQuest",
       description: workshopName,
       image: "https://drive.google.com/file/d/17xEkBh9293ZN0EjwF6BjYDoUeoT-euVU/view?usp=drivesdk ",
       handler: (res) => {
+        console.log(res)
         registerEvent(email, workshopName, res.razorpay_payment_id).then(() => alert("You've successfully registered for "+workshopName)).catch(err => alert(err))
       },
       prefill: {
